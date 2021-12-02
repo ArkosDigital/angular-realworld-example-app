@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY * ./
 
-RUN mv .npmrc npmrc
+RUN mv .npmrc npmrc && \
     rm -f package-lock.json && \     
     npm install --legacy-peer-deps && \
     mv npmrc .npmrc
