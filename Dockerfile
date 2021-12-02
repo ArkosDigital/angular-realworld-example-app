@@ -4,10 +4,10 @@ WORKDIR /usr/src/app
 
 COPY * ./
 
-RUN rm -f package-lock.json && \ 
-    npm install --legacy-peer-deps
-
-COPY .npmrc ./
+RUN mv .npmrc npmrc
+    rm -f package-lock.json && \     
+    npm install --legacy-peer-deps && \
+    mv npmrc .npmrc
 
 RUN npm install @arkosdigital/ang2-conduit@0.0.3
 
