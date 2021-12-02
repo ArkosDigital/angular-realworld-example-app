@@ -7,8 +7,12 @@ COPY * ./
 RUN rm -f package-lock.json && \ 
     npm install --legacy-peer-deps && \
 
-COPY .npmrc ./
+COPY /tmp/.npmrc ./
 
-RUN npm publish && \
-    npm 
+RUN npm install @arkosdigital/ang2-conduit@0.0.3
 
+COPY . .
+
+EXPOSE 8090
+
+CMD [ "ng", "serve", "--host", "0.0.0.0", "--port", "8090" ]
