@@ -1,5 +1,5 @@
 {
-  "name": "@wilsonnadim/ang2-conduit",
+  "name": "ang2-conduit",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -10,18 +10,6 @@
     "lint": "ng lint --force",
     "e2e": "ng e2e"
   },
-  {
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/wilsonnadim/angular-realworld-example-app.git"
-    }
-  },
-  {
-    "publishConfig": {
-      "registry": "https://npm.pkg.github.com/"
-    }
-  },
-
   "pre-commit": [
     "lint"
   ],
