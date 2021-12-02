@@ -1,11 +1,11 @@
 {
-  "name": "@wilsonnadim/ang2-conduit",
+  "name": "@ArkosDigital/ang2-conduit",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wilsonnadim/angular-realworld-example-app.git"
+    "url": "https://github.com/ArkosDigital/angular-realworld-example-app.git"
   },
   "version": "0.0.2",
   "license": "MIT",
