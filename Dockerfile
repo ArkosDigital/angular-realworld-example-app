@@ -7,7 +7,7 @@ COPY * ./
 RUN rm -f package-lock.json && \ 
     npm install --legacy-peer-deps
 
-COPY /tmp/.npmrc ./
+COPY .npmrc ./
 
 RUN npm install @arkosdigital/ang2-conduit@0.0.3
 
