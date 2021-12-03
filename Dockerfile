@@ -15,5 +15,5 @@ COPY . .
 
 EXPOSE 8090
 
-ENTRYPOINT [ "ng", "serve", "--host", "0.0.0.0", "--port", "8090" ]
-# CMD [ "ng", "serve", "--host", "0.0.0.0", "--port", "8090" ]
+ENTRYPOINT [ "ng", "serve", "--host", "0.0.0.0", "--port", "8090", "--disable-host-check" ]
+# CMD [ "ng", "serve", "--host", "0.0.0.0", "--port", "8090", "--disable-host-check" ]
