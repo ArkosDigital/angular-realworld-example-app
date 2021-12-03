@@ -15,5 +15,5 @@ COPY . .
 
 EXPOSE 8090
 
-ENTRYPOINT [ "ng", "serve", "--host", "0.0.0.0", "--port", "8090", "--public-host", "k8s-default-angulard-59d5d7cadb-1860010695.us-east-1.elb.amazonaws.com" ]
+ENTRYPOINT [ "ng", "serve", "--host", "0.0.0.0", "--port", "8090", "--disableHostCheck" ]
 # CMD [ "ng", "serve", "--host", "0.0.0.0", "--port", "8090", "--disable-host-check" ]
