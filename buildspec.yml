@@ -5,10 +5,8 @@ phases:
   install:
     runtime-versions:
       nodejs: 10 
-#      docker: 19.03.1
     commands:
       - echo Installing Mocha...
-#     - npm install -g mocha
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
@@ -17,16 +15,12 @@ phases:
   build:
     commands:
       - echo Build started on `date` 
-      - docker build -t sin/angular-demo:1.0 .
-      - docker tag sin/angular-demo:1.0 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin:latest
+      - docker build -t sin/sin-app:1.0 .
+      - docker tag sin/sin-app:1.0 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:latest
   post_build:
     commands:
       - echo Build completed on `date`
-      - docker push 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin:latest
-# Include only the files required for your application to run..
-# Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
-# used only for building and testing.
-# ExpressJS apps will need other artifact directories included (bin/*, public/*, routes/*, views/* etc).
+      - docker push 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:latest
 artifacts:
   files:
     - app.js
