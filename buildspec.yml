@@ -1,8 +1,6 @@
 # Do not change version. This is the version of aws buildspec, not the version of your buldspec file.
 version: 0.2
-env:
-  variables:
-    image_version: '1.2'
+
 phases:
   install:
     runtime-versions:
@@ -17,12 +15,12 @@ phases:
   build:
     commands:
       - echo Build started on `date` 
-      - docker build -t sin/sin-app:$image_version .
-      - docker tag sin/sin-app:$image_version 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:$image_version
+      - docker build -t sin/sin-app:1.0 .
+      - docker tag sin/sin-app:1.0 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:latest
   post_build:
     commands:
       - echo Build completed on `date`
-      - docker push 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:$image_version
+      - docker push 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:latest
 artifacts:
   files:
     - app.js
