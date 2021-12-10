@@ -9,11 +9,11 @@ phases:
       nodejs: 10 
     commands:
       - echo Installing Mocha...
-  # pre_build:
-  #   commands:
-  #     - echo Installing source NPM dependencies...
-  #     - npm install
-  #     - $(aws ecr get-login --no-include-email --region us-east-1)
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install
+      - $(aws ecr get-login --no-include-email --region us-east-1)
   build:
     commands:
       - echo Build started on `date` 
