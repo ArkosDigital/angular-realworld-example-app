@@ -17,7 +17,7 @@ phases:
       - echo Build started on `date` 
       - echo Fazendo o build da imagem do Docker
       - docker build -t sin/sin-app:$image_tag .
-      - Criando a tag
+      - echo Criando a tag
       - docker tag sin/sin-app:$image_tag 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:$image_tag
   post_build:
     commands:
