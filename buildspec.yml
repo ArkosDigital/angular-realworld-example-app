@@ -22,7 +22,7 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - Fazendo upload da imagem para o ECR
+      - echo Fazendo upload da imagem para o ECR
       - docker push 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:$image_tag
 # artifacts:
 #   files:
