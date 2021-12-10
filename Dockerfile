@@ -1,10 +1,15 @@
-FROM 638274162892.dkr.ecr.us-east-1.amazonaws.com/image-node:latest
+FROM node:9
 
-WORKDIR /usr/src/app
+WORKDIR /app
+
+RUN npm install -g contentful-cli
+
+COPY package.json .
+RUN npm install
 
 COPY . .
 
+USER node
 EXPOSE 8040
 
-ENTRYPOINT [ "node", "app.js" ]
-
+CMD ["npm", "run", "start:dev"]
