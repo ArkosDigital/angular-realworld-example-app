@@ -16,11 +16,11 @@ phases:
     commands:
       - echo Build started on `date` 
       - docker build -t sin/sin-app:1.0 .
-      - docker tag sin/sin-app:1.0 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:latest
+      - docker tag sin/sin-app:1.0 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:1.0
   post_build:
     commands:
       - echo Build completed on `date`
-      - docker push 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:latest
+      - docker push 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:latest:1.0
 artifacts:
   files:
     - app.js
