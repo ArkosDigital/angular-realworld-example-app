@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    image_tag: '2.2'
+    image_tag: '2.3'
 phases:
   install:
     runtime-versions:
@@ -23,7 +23,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Fazendo o scan da image com o Trivy para identificar vulnerabilidade
-      - docker run --rm -v $HOME/Library/Caches:/root/.cache/ 638274162892.dkr.ecr.us-east-1.amazonaws.com/image-trivy:1.0 --no-progress --exit-code 1 --severity HIGH,CRITICAL alpine
+      - docker run --rm -v $HOME/Library/Caches:/root/.cache/ 638274162892.dkr.ecr.us-east-1.amazonaws.com/image-trivy:1.0 --no-progress --exit-code 1 --severity HIGH,CRITICAL sin/sin-app:$image_tag
       - echo Fazendo upload da imagem para o ECR
       - docker push 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:$image_tag
 # artifacts:
