@@ -5,13 +5,18 @@ env:
 phases:
   install:
     runtime-versions:
-      nodejs: 10 
+      docker: 18
     commands:
       - echo Build app
   pre_build:
     commands:
-      - echo Fzendo login no ECR...
+      - echo Fazendo login no ECR...
       - $(aws ecr get-login --no-include-email --region us-east-1)
+      - apt-get install wget apt-transport-https gnupg
+      - wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | apt-key add -
+      - echo deb https://aquasecurity.github.io/trivy-repo/deb bionic main | tee -a /etc/apt/sources.list.d/trivy.list
+      - apt-get update
+      - apt-get install -y trivy
   build:
     commands:
       - echo Build started on `date` 
@@ -23,7 +28,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Fazendo o scan da image com o Trivy para identificar vulnerabilidade
-      - docker run --rm -v $HOME/Library/Caches:/root/.cache/ 638274162892.dkr.ecr.us-east-1.amazonaws.com/image-trivy:1.0 --no-progress --exit-code 1 --severity HIGH,CRITICAL sin/sin-app:$image_tag
+      - trivy --no-progress --exit-code 1 --severity HIGH,CRITICAL sin/sin-app:$image_tag
       - echo Fazendo upload da imagem para o ECR
       - docker push 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:$image_tag
 # artifacts:
