@@ -23,7 +23,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Fazendo o scan da image com o Trivy para identificar vulnerabilidade
-      - docker run --rm -v $HOME/Library/Caches:/root/.cache/ 638274162892.dkr.ecr.us-east-1.amazonaws.com/image-trivy --no-progress --exit-code 1 --severity HIGH,CRITICAL 
+      - docker run --rm -v $HOME/Library/Caches:/root/.cache/ 638274162892.dkr.ecr.us-east-1.amazonaws.com/image-trivy --no-progress --exit-code 1 --severity HIGH,CRITICAL 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:$image_tag
       - echo Fazendo upload da imagem para o ECR
       - docker push 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:$image_tag
 # artifacts:
