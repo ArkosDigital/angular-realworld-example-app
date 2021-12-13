@@ -24,7 +24,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Fazendo o scan da image com o Trivy para identificar vulnerabilidade
-      - trivy image sin/sin-app:$image_tag
+      - trivy image --exit-code 1 --severity CRITICAL sin/sin-app:$image_tag
       - echo Fazendo upload da imagem para o ECR
       - docker push 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:$image_tag
 # artifacts:
