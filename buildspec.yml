@@ -11,6 +11,7 @@ phases:
   pre_build:
     commands:
       - echo Fazendo login no ECR...
+      - rpm -ivh https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.rpm
       - $(aws ecr get-login --no-include-email --region us-east-1) 
   build:
     commands:
@@ -23,6 +24,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Fazendo o scan da image com o Trivy para identificar vulnerabilidade
+      - trivy image sin/sin-app:$image_tag
       - echo Fazendo upload da imagem para o ECR
       - docker push 638274162892.dkr.ecr.us-east-1.amazonaws.com/sin-app:$image_tag
 # artifacts:
